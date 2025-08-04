@@ -1,0 +1,26 @@
+Mango|25|5|Common
+Double Mango|150|17.5|Common
+Big Mango|400|25|Common
+Dark Mango|1200|62.5|Common
+Zombie Mango|2500|125|Common
+Mustard Mango|3500|160|Rare
+Toxic Mango|5000|275|Rare
+Water Mango|8000|375|Rare
+Lava Mango|12000|550|Rare
+Electric Mango|18000|900|Rare
+Troll Mango|25000|1500|Rare
+Light Mango|45000|2500|Rare
+Agent Mango|80000|5000|Legendary
+Gold Mango|140000|9000|Legendary
+Giga Mango|250000|17500|Legendary
+Subaru Mango|375000|25000|Legendary
+Galaxy Mango|500000|45000|Mythic
+Six Seven Mango|750000|65000|Mythic
+Mangito Bananito|875000|75000|Mythic
+Sigma Mango|1000000|90000|Mythic
+Disco Mango|1750000|200000|Mythic
+Mega Troll Mango|5250000|325000|Mythic
+Mango King|35000000|750000|Secret
+SCP Mango|85000000|2000000|Secret
+Angel Mango|100000000|2625000|Secret
+Los Mangitos|350000000|7750000|Secret

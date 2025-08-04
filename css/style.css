@@ -1,0 +1,328 @@
+/* Estilos globales */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+  padding-bottom: 50px;
+}
+
+/* MENÚ */
+.menu {
+  background-color: #333;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo {
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* Botón hamburguesa */
+.hamburger {
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+
+/* Navegación */
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.buttons a {
+  color: white;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.buttons a:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}
+
+/* CONTENEDOR PRINCIPAL */
+.container {
+  background-color: #fff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 800px;
+  margin: 90px auto 40px auto;
+  text-align: left;
+  line-height: 1.8;
+}
+
+/* Título */
+.title h1 {
+  text-align: center;
+  color: #ff5722;
+  font-size: 32px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* calendario */
+.calendar-container {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.calendar-header button {
+  background-color: #ff5722;
+  border: none;
+  color: white;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.calendar-header button:hover {
+  background-color: #e64a19;
+}
+
+.calendar-header h2 {
+  color: #ff5722;
+  font-weight: 700;
+  font-size: 24px;
+  margin: 0;
+}
+
+table.calendar {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.calendar th,
+table.calendar td {
+  width: 14.28%;
+  height: 80px;
+  text-align: center;
+  vertical-align: top;
+  border: 1px solid #ddd;
+  padding: 6px 4px;
+  position: relative;
+  cursor: default;
+  user-select: none;
+}
+
+table.calendar th {
+  background-color: #ffccbc;
+  color: #bf360c;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+table.calendar td:hover {
+  background-color: #ffe0b2;
+}
+
+/* Resaltar sábados */
+table.calendar td.saturday {
+  background-color: #ffebee;
+  color: #d32f2f;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Tooltip con horario */
+.tooltip {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 100%; /* Cambiado para que aparezca a la derecha */
+  margin-left: 8px;
+  background-color: #ff5722;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  width: 220px;
+  font-size: 14px;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* Flecha para el tooltip */
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent #ff5722 transparent transparent;
+}
+
+table.calendar td.saturday:hover .tooltip {
+  display: block;
+  pointer-events: auto;
+}
+
+/* FORMULARIO DE REPORTES */
+.form-report {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.form-report input[type="text"],
+.form-report select,
+.form-report textarea {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+  resize: vertical;
+}
+
+.form-report input[type="text"] {
+  flex: 1 1 180px;
+  min-width: 150px;
+}
+
+.form-report select {
+  width: 120px;
+}
+
+.form-report textarea {
+  flex: 2 1 300px;
+  min-height: 60px;
+}
+
+.form-report input[type="text"]:focus,
+.form-report select:focus,
+.form-report textarea:focus {
+  outline: none;
+  border-color: #ff5722;
+  box-shadow: 0 0 6px rgba(255, 87, 34, 0.5);
+}
+
+.form-report button {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.form-report button:hover {
+  background-color: #e64a19;
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .buttons {
+    display: none;
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+  }
+
+  .buttons.active {
+    display: flex;
+  }
+
+  .buttons a {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #444;
+  }
+
+  .container {
+    padding: 50px 16px 20px;
+    max-width: 100%;
+  }
+
+  .title h1 {
+    font-size: 28px;
+  }
+
+  .calendar-header h2 {
+    font-size: 18px;
+  }
+
+  table.calendar th,
+  table.calendar td {
+    height: 60px;
+    font-size: 12px;
+  }
+
+  .tooltip {
+    width: 160px;
+    font-size: 12px;
+  }
+}
+
+/* Responsive para formulario */
+@media (max-width: 600px) {
+  .form-report {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .form-report input[type="text"],
+  .form-report select,
+  .form-report textarea,
+  .form-report button {
+    width: 100%;
+    flex: unset;
+  }
+
+  .form-report textarea {
+    min-height: 80px;
+  }
+}

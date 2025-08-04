@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Discord</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="menu">
+    <div class="menu-container">
+      <div class="logo">S.A.M</div>
+      <nav class="buttons">
+        <a href="index.html">home</a>
+        <a href="mutations.html">Mutations</a>
+        <a href="prices.html">Prices</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="calendar.html">calendar</a>
+        <a href="discord.html">Discord</a>
+      </nav>
+      <div class="hamburger">&#9776;</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="title">
+      <h1>Join to S.A.M</h1>
+    </div>
+    <div class="content">
+      <p>Hey there! Want to get the most out of <strong>S.A.M</strong>? Join our official Discord server and connect with other players who love the game just like you!</p>
+      <p>Chat, share tips and tricks, swap strategies, and stay up-to-date with all the latest news and updates. Whether you’re just starting out or you’ve been grinding your base and mangos for a while, our community is here to help and have fun together.</p>
+      <p>Plus, you'll get the scoop on new features, events, and exclusive contests where you can win cool in-game rewards. It’s the perfect spot to hang out, make friends, and step up your game.</p>
+      <p>Protecting your mangos and upgrading your base is way easier (and way more fun) when you’re part of a team. So don’t miss out — join us and start trading tips, showing off your gear, and leveling up your skills!</p>
+      <p>Click below to jump in now:</p>
+      <a href="https://discord.gg/m8Y7w2t6wD" target="_blank" rel="noopener noreferrer" class="join-discord-btn">Join the S.A.M Discord Server</a>
+    </div>
+  </main>
+
+  <script>
+    // Funcionalidad simple para el menú hamburguesa en mobile
+    const hamburger = document.querySelector('.hamburger');
+    const buttons = document.querySelector('.buttons');
+
+    hamburger.addEventListener('click', () => {
+      buttons.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

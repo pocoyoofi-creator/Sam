@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prices</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <header class="menu">
+    <div class="menu-container">
+      <div class="logo">S.A.M</div>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+      <nav class="buttons" id="nav-menu">
+        <a href="index.html">home</a>
+        <a href="mutations.html">Mutations</a>
+        <a href="prices.html">Prices</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="calendar.html">calendar</a>
+        <a href="discord.html">Discord</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="title">
+      <h1>PRICES</h1>
+    </div>
+
+    <!-- Selector para elegir mutación -->
+    <div class="mutation-selector">
+      <label for="mutation-select">Choose a Mutation:</label>
+      <select id="mutation-select">
+        <option value="none">No Mutation</option>
+        <option value="gold">Gold Mutation</option>
+        <option value="diamond">Diamond Mutation</option>
+        <option value="rainbow">Rainbow Mutation</option>
+        <option value="prox">Proxima Mutation</option>
+      </select>
+    </div>
+
+    <!-- Contenedor donde se mostrarán los detalles de cada mango -->
+    <div id="price-container" class="price-container">
+      <p>Select a mutation to see the details.</p>
+    </div>
+  </div>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Cierra el menú al hacer clic en un enlace
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    function loadMutationPrices(mutation) {
+      const fileName =
+        mutation === "none"
+          ? "mangos-price/mangos.txt"
+          : `mangos-price/mangos-${mutation}.txt`;
+
+      const priceContainer = document.getElementById("price-container");
+      priceContainer.innerHTML = "<p>Loading...</p>";
+
+      fetch(fileName)
+        .then((response) => {
+          if (!response.ok) throw new Error("File not found");
+          return response.text();
+        })
+        .then((data) => {
+          const lines = data.trim().split("\n");
+          priceContainer.innerHTML = "";
+
+          if (lines.length === 0) {
+            priceContainer.innerHTML = "<p>No data available for this mutation.</p>";
+            return;
+          }
+
+          lines.forEach((line) => {
+            if (!line.includes("|")) return;
+
+            const [name, price, perSecond, rarity] = line.split("|");
+
+            const priceItem = document.createElement("div");
+            priceItem.classList.add("price-item");
+            priceItem.style.border = "1px solid #ddd";
+            priceItem.style.borderRadius = "8px";
+            priceItem.style.padding = "15px";
+            priceItem.style.marginBottom = "15px";
+            priceItem.style.backgroundColor = "#fafafa";
+
+            priceItem.innerHTML = `
+              <h2>${name}</h2>
+              <p><strong>Price:</strong> $${price}</p>
+              <p><strong>Per Second:</strong> ${perSecond} Mango/s</p>
+              <p><strong>Rarity:</strong> ${rarity}</p>
+            `;
+
+            priceContainer.appendChild(priceItem);
+          });
+        })
+        .catch((err) => {
+          priceContainer.innerHTML = `<p>Error loading <code>${fileName}</code>: ${err.message}</p>`;
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadMutationPrices("none");
+
+      document
+        .getElementById("mutation-select")
+        .addEventListener("change", (e) => {
+          loadMutationPrices(e.target.value);
+        });
+    });
+  </script>
+</body>
+</html>

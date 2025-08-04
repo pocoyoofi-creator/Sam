@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mutations</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="menu">
+    <div class="menu-container">
+      <div class="logo">S.A.M</div>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+      <nav class="buttons" id="nav-menu">
+        <a href="index.html">home</a>
+        <a href="mutations.html">Mutations</a>
+        <a href="prices.html">Prices</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="calendar.html">calendar</a>
+        <a href="discord.html">Discord</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="title">
+      <h1>Mutations in Steal a Mango (S.A.M)</h1>
+    </div>
+    <div class="content">
+      <p>In <strong>S.A.M</strong>, <strong>mutations</strong> play a key role in the players' progress, directly affecting the "luck" and the earnings obtained during the game...</p>
+
+      <h3>Luck-Based Mutations</h3>
+      <p><strong>Luck-based mutations</strong> are random events that occur unpredictably and provide significant multipliers for your earnings...</p>
+      <ul>
+        <li><strong>Gold</strong>: Multiplies your earnings by <strong>x2</strong>.</li>
+        <li><strong>Diamond</strong>: Multiplies your earnings by <strong>x5</strong>.</li>
+        <li><strong>Rainbow</strong>: Multiplies your earnings by <strong>x10</strong>.</li>
+      </ul>
+
+      <h3>Admin Abuse Mutations</h3>
+      <p><strong>Admin abuse mutations</strong> are more elaborate events, usually with greater prior notice...</p>
+
+      <h3>Impact of Mutations</h3>
+      <p>Regardless of whether the mutation is luck-based or admin abuse, all of them <strong>multiply your luck</strong>...</p>
+    </div>
+  </div>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trade Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/stylecalculator.css" />
+</head>
+<body>
+    <div class="menu">
+        <div class="menu-container">
+            <div class="logo">TradeCalc</div>
+            <div class="hamburger">&#9776;</div> <!-- botón hamburguesa -->
+            <div class="buttons">
+                <a href="index.html">home</a>
+                <a href="mutations.html">Mutations</a>
+                <a href="prices.html">Prices</a>
+                <a href="calculator.html">Calculator</a>
+                <a href="calendar.html">calendar</a>
+                <a href="discord.html">Discord</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Trade Calculator</h1>
+
+        <div class="trade-container">
+            <!-- Your offer area -->
+            <div class="trade-area">
+                <h2>Your Offer</h2>
+                <select id="your-offer-list" onchange="addItem('your')">
+                    <option value="" disabled selected>Select Mango</option>
+                </select>
+                <div class="items" id="your-items"></div>
+                <p class="totals" id="your-total">Your Total: $0</p>
+            </div>
+
+            <!-- Other player's offer area -->
+            <div class="trade-area">
+                <h2>Them Offer</h2>
+                <select id="their-offer-list" onchange="addItem('their')">
+                    <option value="" disabled selected>Select Mango</option>
+                </select>
+                <div class="items" id="their-items"></div>
+                <p class="totals" id="their-total">Their Total: $0</p>
+            </div>
+        </div>
+
+        <button id="check-trade-btn" onclick="checkTrade()">Check Trade</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        // Menú hamburguesa
+        const hamburger = document.querySelector('.hamburger');
+        const buttons = document.querySelector('.buttons');
+
+        hamburger.addEventListener('click', () => {
+            buttons.classList.toggle('active');
+        });
+
+        // Trade calculator JS (puedes poner aquí tu JS original para mangos)
+        let availableMangos = [];
+
+        function loadMangos() {
+            const sources = [
+                { mutation: 'none', file: 'mangos-price/mangos.txt' },
+                { mutation: 'gold', file: 'mangos-price/mangos-gold.txt' },
+                { mutation: 'diamond', file: 'mangos-price/mangos-diamond.txt' },
+                { mutation: 'rainbow', file: 'mangos-price/mangos-rainbow.txt' },
+            ];
+
+            Promise.all(sources.map(src => loadMangosFromFile(src.mutation, src.file)))
+                .then(updateOfferOptions)
+                .catch(err => console.error("Error loading mangos:", err));
+        }
+
+        async function loadMangosFromFile(mutation, fileName) {
+            const response = await fetch(fileName);
+            if (!response.ok) throw new Error(`Failed to load ${fileName}`);
+            const text = await response.text();
+
+            text.trim().split('\n').forEach(line => {
+                if (line.trim() === '') return;
+                const [name, priceRaw, perSecondRaw, rarity] = line.split('|');
+
+                const price = parseFloat(priceRaw.replace(/,/g, '').trim());
+                const perSecond = parseFloat(perSecondRaw.replace(/,/g, '').trim());
+
+                availableMangos.push({
+                    name: name.trim(),
+                    price,
+                    perSecond,
+                    rarity: rarity.trim(),
+                    mutation
+                });
+            });
+        }
+
+        function updateOfferOptions() {
+            const yourOfferList = document.getElementById('your-offer-list');
+            const theirOfferList = document.getElementById('their-offer-list');
+
+            yourOfferList.innerHTML = '<option value="" disabled selected>Select Mango</option>';
+            theirOfferList.innerHTML = '<option value="" disabled selected>Select Mango</option>';
+
+            availableMangos.forEach((mango, index) => {
+                const label = `${mango.name} - $${mango.price.toLocaleString()} | ${mango.perSecond.toLocaleString()}/s (${mango.mutation})`;
+                const option1 = new Option(label, index);
+                const option2 = new Option(label, index);
+
+                yourOfferList.add(option1);
+                theirOfferList.add(option2);
+            });
+        }
+
+        function addItem(type) {
+            const select = document.getElementById(type === 'your' ? 'your-offer-list' : 'their-offer-list');
+            const selectedIndex = select.value;
+            if (selectedIndex === "") return;
+
+            const mango = availableMangos[selectedIndex];
+
+            const itemDiv = document.createElement('div');
+            itemDiv.classList.add('mango-item');
+            itemDiv.textContent = `${mango.name} - $${mango.price.toLocaleString()} | ${mango.perSecond.toLocaleString()}/s (${mango.mutation})`;
+            itemDiv.setAttribute('data-price', mango.price);
+
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.onclick = () => {
+                itemDiv.remove();
+                updateTradeValue();
+            };
+
+            itemDiv.appendChild(removeButton);
+            const container = document.getElementById(type === 'your' ? 'your-items' : 'their-items');
+            container.appendChild(itemDiv);
+
+            select.value = "";
+            updateTradeValue();
+        }
+
+        function updateTradeValue() {
+            const yourItems = document.getElementById("your-items").children;
+            const theirItems = document.getElementById("their-items").children;
+
+            let yourTotal = 0;
+            let theirTotal = 0;
+
+            for (let item of yourItems) {
+                yourTotal += parseFloat(item.getAttribute("data-price"));
+            }
+
+            for (let item of theirItems) {
+                theirTotal += parseFloat(item.getAttribute("data-price"));
+            }
+
+            document.getElementById("your-total").textContent = `Your Total: $${yourTotal.toLocaleString()}`;
+            document.getElementById("their-total").textContent = `Their Total: $${theirTotal.toLocaleString()}`;
+        }
+
+        function checkTrade() {
+            const yourTotal = parseFloat(document.getElementById("your-total").textContent.split('$')[1].replace(/,/g, ''));
+            const theirTotal = parseFloat(document.getElementById("their-total").textContent.split('$')[1].replace(/,/g, ''));
+
+            const result = document.getElementById("result");
+            if (yourTotal === theirTotal) {
+                result.textContent = "✅ The trade is fair!";
+            } else if (yourTotal > theirTotal) {
+                result.textContent = "⚠️ You're offering more than you're receiving.";
+            } else {
+                result.textContent = "✅ You're receiving more than you're offering.";
+            }
+        }
+
+        window.onload = loadMangos;
+    </script>
+</body>
+</html>

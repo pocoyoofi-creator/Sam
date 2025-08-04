@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>home</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="menu">
+    <div class="menu-container">
+      <div class="logo">S.A.M</div>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+      <nav class="buttons" id="nav-menu">
+        <a href="index.html">home</a>
+        <a href="mutations.html">Mutations</a>
+        <a href="prices.html">Prices</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="calendar.html">calendar</a>
+        <a href="discord.html">Discord</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="title">
+      <h1>Welcome to Steal a Mango (S.A.M)</h1>
+    </div>
+    <div class="content">
+        <p><strong>S.A.M</strong> is a Roblox game inspired by titles like <em>Steal a Brainrot</em>, but with its own unique twist. In this game, each player starts with a simple base and the goal of collecting mangos. These aren’t just any mangos they each offer different benefits that help you upgrade your base and progress faster.</p>
+        <p>At the beginning, you’ll have between 8 to 10 available slots in your base where you can store the mangos you buy, but here’s the catch: other players can steal them! If you leave your base unprotected or open, others can swoop in and take your mangos, so you’ll need to stay alert and defend what you’ve gathered.</p>
+        <p>The mangos you buy are automatically sent to your base, but there’s always the risk of someone else stealing them before you can make use of them. To avoid running out of space, you can also sell any mangos you don’t need, freeing up slots for the new ones coming down the conveyor belt.</p>
+        <p>What makes <strong>S.A.M</strong> interesting is that as you progress, you’ll unlock and buy weapons to defend your base. These weapons are unlocked every time you rebirth, giving you even more motivation to keep playing. The more times you rebirth, the better your weapons and defenses will be, allowing you to protect your mangos and compete with other players more effectively.</p>
+        <p>The goal is simple but challenging: collect as many mangos as you can, keep your base protected, and always stay one step ahead of the other players. With a mix of strategy, action, and a little bit of luck, <strong>S.A.M</strong> challenges you to be quick, clever, and most importantly be the best at collecting mangos!</p>
+        
+    </div>
+  </div>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Cierra el menú al hacer clic en un enlace
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
