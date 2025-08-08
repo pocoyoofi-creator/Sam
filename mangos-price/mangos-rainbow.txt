@@ -1,26 +1,26 @@
-Mango|25|10|Common
-Double Mango|150|35|Common
-Big Mango|400|50|Common
-Dark Mango|1200|125|Common
-Zombie Mango|2500|250|Common
-Mustard Mango|3500|320|Rare
-Toxic Mango|5000|550|Rare
-Water Mango|8000|750|Rare
-Lava Mango|12000|1100|Rare
-Electric Mango|18000|1800|Rare
-Troll Mango|25000|3000|Rare
-Light Mango|45000|5000|Rare
-Agent Mango|80000|10000|Legendary
-Gold Mango|140000|18000|Legendary
-Giga Mango|250000|35000|Legendary
-Subaru Mango|375000|50000|Legendary
-Galaxy Mango|500000|90000|Mythic
-Six Seven Mango|750000|130000|Mythic
-Mangito Bananito|875000|150000|Mythic
-Sigma Mango|1000000|180000|Mythic
-Disco Mango|1750000|400000|Mythic
-Mega Troll Mango|5250000|650000|Mythic
-Mango King|35000000|1500000|Secret
-SCP Mango|85000000|4000000|Secret
-Angel Mango|100000000|5250000|Secret
-Los Mangitos|350000000|15500000|Secret
+Mango|25|10|Common|30 Robux
+Double Mango|150|35|Common|50 Robux
+Big Mango|400|50|Common|70 Robux
+Dark Mango|1,200|125|Common|100 Robux
+Zombie Mango|2,500|250|Common|130 Robux
+Mustard Mango|3,500|320|Rare|150 Robux
+Toxic Mango|5,000|550|Rare|180 Robux
+Water Mango|8,000|750|Rare|200 Robux
+Lava Mango|12,000|1,100|Rare|230 Robux
+Electric Mango|18,000|1,800|Rare|250 Robux
+Troll Mango|25,000|3,000|Rare|270 Robux
+Light Mango|45,000|5,000|Rare|300 Robux
+Agent Mango|80,000|10,000|Legendary|500 Robux
+Gold Mango|140,000|18,000|Legendary|550 Robux
+Giga Mango|250,000|35,000|Legendary|590 Robux
+Subaru Mango|375,000|50,000|Legendary|640 Robux
+Galaxy Mango|500,000|90,000|Mythic|800 Robux
+Six Seven Mango|750,000|130,000|Mythic|870 Robux
+Mangito Bananito|875,000|150,000|Mythic|960 Robux
+Sigma Mango|1,000,000|180,000|Mythic|1,000 Robux
+Disco Mango|1,750,000|400,000|Mythic|1,060 Robux
+Mega Troll Mango|5,250,000|650,000|Mythic|1,110 Robux
+Mango King|35,000,000|1,500,000|Secret|1,200 Robux
+SCP Mango|85,000,000|4,000,000|Secret|1,270 Robux
+Angel Mango|100,000,000|5,250,000|Secret|1,500 Robux
+Los Mangitos|350,000,000|15,500,000|Secret|2,000 Robux
